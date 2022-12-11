@@ -96,23 +96,27 @@ def installPkg(name):
     versionStartIndex = slackBuild.index('VERSION=')
     versionEndIndex = slackBuild[versionStartIndex:].index('\n')
     VERSION = slackBuild[versionStartIndex+8:versionStartIndex+versionEndIndex]
+    VERSION = VERSION[VERSION.index('-')+1:VERSION.index('}')]
 
-    ARCH = os.popen('uname -m').read()
+    ARCH = os.popen('uname -m').read()[:-1]
 
     buildStartIndex = slackBuild.index('BUILD=')
     buildEndIndex = slackBuild[buildStartIndex:].index('\n')
     BUILD = slackBuild[buildStartIndex+6:buildStartIndex+buildEndIndex]
+    BUILD = BUILD[BUILD.index('-')+1:BUILD.index('}')]
 
     tagStartIndex = slackBuild.index('TAG=')
     tagEndIndex = slackBuild[tagStartIndex:].index('\n')
     TAG = slackBuild[tagStartIndex+4:tagStartIndex+tagEndIndex]
+    TAG = TAG[TAG.index('-')+1:TAG.index('}')]
 
     typeStartIndex = slackBuild.index('PKGTYPE=')
     typeEndIndex = slackBuild[typeStartIndex:].index('\n')
     PKGTYPE = slackBuild[typeStartIndex+8:typeStartIndex+typeEndIndex]
+    PKGTYPE = PKGTYPE[PKGTYPE.index('-')+1:PKGTYPE.index('}')]
 
     pkgPath = f'/tmp/{PRGNAM}-{VERSION}-{ARCH}-{BUILD}{TAG}.{PKGTYPE}'
-
+    print(pkgPath)
     os.chdir('/tmp')
     os.system(f'upgradepkg --install-new {pkgPath}')
 

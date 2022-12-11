@@ -114,7 +114,7 @@ def installPkg(name):
     pkgPath = f'/tmp/{PRGNAM}-{VERSION}-{ARCH}-{BUILD}{TAG}.{PKGTYPE}'
 
     os.chdir('/tmp')
-    os.system(f'upgrade-pkg --install-new {pkgPath}')
+    os.system(f'upgradepkg --install-new {pkgPath}')
 
 
 def queuePkgs(pkgURL, queue):

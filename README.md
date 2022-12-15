@@ -5,6 +5,9 @@ sbomgr is a simple utility that can install packages (and resolve their dependen
 # Usage
 /usr/sbin/sbomgr [link]
 
+[link] - https://slackbuilds.org/repository/[version]/[category]/[pkg]/ <br>
+i.e. https://slackbuilds.org/repository/15.0/development/notepadqq/
+
 # Installation
 ```git clone https://github.com/thm-unix/sbomgr```
 
@@ -15,3 +18,4 @@ sbomgr is a simple utility that can install packages (and resolve their dependen
 ```cp sbomgr.py /usr/sbin/sbomgr```
 
 # Screenshots
+<img src="sbomgr-scr.png" width="600" height="430">

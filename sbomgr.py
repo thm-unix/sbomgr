@@ -187,7 +187,7 @@ def sequence(pkgURL):
 
 
 if __name__ == '__main__':
-    if os.getenv('USER') == 'root':
+    if os.popen('whoami').read()[:-1] == 'root':
         if len(sys.argv) > 1:
             if sys.argv[1].startswith('-h') or sys.argv[1].startswith('--h'):
                 # Help
